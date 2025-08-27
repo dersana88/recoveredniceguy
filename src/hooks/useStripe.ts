@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 
 export function useStripe() {
   const [loading, setLoading] = useState(false);
-  const { session } = useAuth();
 
   const createCheckoutSession = async (priceId: string, mode: 'payment' | 'subscription' = 'payment') => {
-    if (!session) {
-      throw new Error('User must be authenticated');
-    }
-
     setLoading(true);
 
     try {
@@ -21,7 +15,6 @@ export function useStripe() {
       const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/stripe-checkout`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -53,10 +46,6 @@ export function useStripe() {
   };
 
   const getSubscription = async () => {
-    if (!session) {
-      return null;
-    }
-
     try {
       const { data, error } = await supabase
         .from('stripe_user_subscriptions')
@@ -76,10 +65,6 @@ export function useStripe() {
   };
 
   const getOrders = async () => {
-    if (!session) {
-      return [];
-    }
-
     try {
       const { data, error } = await supabase
         .from('stripe_user_orders')
