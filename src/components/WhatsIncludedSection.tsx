@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone } from 'lucide-react';
+import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone, AlertTriangle } from 'lucide-react';
 
 export default function WhatsIncludedSection() {
   const parts = [
@@ -91,6 +91,18 @@ export default function WhatsIncludedSection() {
         "Outcome Independence Training",
         "Moving On Power Moves"
       ]
+    },
+    {
+      icon: AlertTriangle,
+      title: "BONUS #4: EMERGENCY PROTOCOL FOR SERIAL TEXTERS",
+      value: "$27 value",
+      pages: "12 pages",
+      items: [
+        "Damage Control After Multiple Texts",
+        "The \"Reset\" Message Template",
+        "Recovery from Desperate Messaging",
+        "Salvaging Over-Communication Mistakes"
+      ]
     }
   ];
 
@@ -102,6 +114,7 @@ export default function WhatsIncludedSection() {
     { item: "Psychology Decoder (31 pages):", value: "$47" },
     { item: "Never Again Protocol (28 pages):", value: "$47" },
     { item: "Mindset Mastery (19 pages):", value: "$37" },
+    { item: "Emergency Protocol (12 pages):", value: "$27" },
     { item: "Lifetime Updates & Support:", value: "$67" }
   ];
 
@@ -208,7 +221,7 @@ export default function WhatsIncludedSection() {
         <div className="border-t border-gray-600 pt-4">
           <div className="flex justify-between items-center mb-2">
             <span className="text-lg font-semibold text-gray-300">Total Value:</span>
-            <span className="text-lg font-semibold text-gray-400 line-through">$297</span>
+            <span className="text-lg font-semibold text-gray-400 line-through">$324</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-xl font-bold text-white">Today:</span>
