@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle, Download, ArrowRight } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function SuccessPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [orderDetails, setOrderDetails] = useState<any>(null);
 
   const sessionId = searchParams.get('session_id');
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
     if (!sessionId) {
       navigate('/');
       return;
@@ -25,7 +32,7 @@ export default function SuccessPage() {
       });
       setLoading(false);
     }, 1500);
-  }, [sessionId, navigate]);
+  }, [user, sessionId, navigate]);
 
   const handleDownload = () => {
     // Implement download logic here
