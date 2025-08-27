@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStripe } from '../hooks/useStripe';
 import { products } from '../stripe-config';
-import { BookOpen, Clock, Users, Calculator, AlertTriangle, Gift, Download, Shield } from 'lucide-react';
+import { BookOpen, Clock, Users, Calculator, AlertTriangle, Gift, Download, Shield, Star } from 'lucide-react';
 
 export default function ProductContentsSection() {
   const { createCheckoutSession, loading } = useStripe();
@@ -84,6 +84,20 @@ export default function ProductContentsSection() {
         </div>
       </div>
 
+      {/* Mark's 72-hour madness testimonial */}
+      <div className="bg-blue-900/20 rounded-xl p-6 md:p-8 border border-blue-500/30 mb-12">
+        <div className="flex justify-center mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={18} className="text-yellow-400 fill-current" />
+          ))}
+        </div>
+        <blockquote className="text-lg text-gray-300 leading-relaxed mb-4 italic text-center">
+          "I was in complete 72-hour madness mode—checking her Instagram stories, analyzing her online activity, 
+          losing my mind. The protocol showed me exactly which type of ghost she was and the precise message to send. 
+          I went from obsessive phone-checking to getting a response in 8 hours."
+        </blockquote>
+        <cite className="text-blue-400 font-semibold block text-center">— Mark T., recovered after 3 days of silence</cite>
+      </div>
       <div className="mb-12">
         <h3 className="text-xl md:text-2xl font-semibold mb-8 text-center">
           What You'll Master:
@@ -138,6 +152,19 @@ export default function ProductContentsSection() {
         </div>
       </div>
 
+      {/* Sofia's 3AM purchase testimonial - Pre-purchase objection handling */}
+      <div className="bg-purple-900/20 rounded-xl p-6 md:p-8 border border-purple-500/30 mb-12">
+        <div className="flex justify-center mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={18} className="text-yellow-400 fill-current" />
+          ))}
+        </div>
+        <blockquote className="text-lg text-gray-300 leading-relaxed mb-4 italic text-center">
+          "I bought this at 3 AM after another sleepless night wondering what I did wrong. Within 20 minutes of reading, 
+          I understood exactly why he went silent and what to do about it. The relief was instant—I finally had a plan instead of just anxiety."
+        </blockquote>
+        <cite className="text-purple-400 font-semibold block text-center">— Sofia R., purchased during her darkest moment</cite>
+      </div>
       <div className="bg-gray-900/50 rounded-xl p-6 md:p-8 border border-gray-700 mb-12">
         <h3 className="text-xl md:text-2xl font-semibold mb-6 text-center">
           Proven Results from Real Data:

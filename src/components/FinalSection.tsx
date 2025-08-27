@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStripe } from '../hooks/useStripe';
 import { products } from '../stripe-config';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 
 export default function FinalSection() {
   const { createCheckoutSession, loading } = useStripe();
@@ -76,6 +76,19 @@ export default function FinalSection() {
         ))}
       </div>
 
+      {/* Exit-intent style testimonial */}
+      <div className="bg-purple-900/20 rounded-xl p-6 md:p-8 border border-purple-500/30 mb-12">
+        <div className="flex justify-center mb-4">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={18} className="text-yellow-400 fill-current" />
+          ))}
+        </div>
+        <blockquote className="text-lg text-gray-300 leading-relaxed mb-4 italic text-center">
+          "I bought this at 3 AM after another sleepless night wondering what I did wrong. Within 20 minutes of reading, 
+          I understood exactly why he went silent and what to do about it. The relief was instant—I finally had a plan instead of just anxiety."
+        </blockquote>
+        <cite className="text-purple-400 font-semibold block text-center">— Sofia R., purchased during her darkest moment</cite>
+      </div>
       <div className="text-center bg-gray-900/50 rounded-xl p-8 border border-gray-700">
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-6">
           You searched 'why did she ghost me' and found this page.<br />
