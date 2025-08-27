@@ -46,14 +46,14 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 sm:px-6 pt-safe pb-safe">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-gray-400">Get instant access to the Ghost Recovery Protocol</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">Create Account</h1>
+          <p className="text-sm sm:text-base text-gray-400">Get instant access to the Ghost Recovery Protocol</p>
         </div>
 
-        <div className="bg-gray-900/50 rounded-xl p-8 border border-gray-700">
+        <div className="bg-gray-900/50 rounded-xl p-6 sm:p-8 border border-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
@@ -133,7 +133,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 flex items-center justify-center space-x-2"
+              className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white py-3 px-4 rounded-lg font-semibold text-base transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 flex items-center justify-center space-x-2"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -147,7 +147,7 @@ export default function SignupPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-400">
+            <p className="text-sm sm:text-base text-gray-400">
               Already have an account?{' '}
               <Link to="/login" className="text-green-400 hover:text-green-300 font-medium transition-colors">
                 Sign in

@@ -58,18 +58,18 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
 
   return (
     <section className="mb-16 md:mb-24 fade-in">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-8 sm:mb-12 px-4">
         Here's What "Active 12 Minutes Ago" Actually Means:
       </h2>
       
-      <div className="text-center mb-8">
-        <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+      <div className="text-center mb-6 sm:mb-8">
+        <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">
           She's not ignoring your message because she didn't see it. She's ignoring it because 
           <span className="text-orange-400 font-semibold"> she knows exactly what to expect</span> if she responds.
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4 px-4">
         {phases.map((phase, index) => {
           const isHighlighted = phase.timelineMatch.includes(selectedTimeline);
           const isExpanded = expandedPhase === index;
@@ -85,25 +85,25 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
             >
               <button
                 onClick={() => togglePhase(index)}
-                className="w-full p-6 flex items-center justify-between text-left"
+                className="w-full p-4 sm:p-6 flex items-center justify-between text-left"
               >
-                <h3 className={`text-lg md:text-xl font-semibold ${
+                <h3 className={`text-base sm:text-lg md:text-xl font-semibold pr-4 ${
                   isHighlighted ? 'text-orange-400' : 'text-white'
                 }`}>
                   {phase.title}
                 </h3>
                 {isExpanded ? (
-                  <ChevronDown className="text-gray-400" size={24} />
+                  <ChevronDown className="text-gray-400 flex-shrink-0" size={20} />
                 ) : (
-                  <ChevronRight className="text-gray-400" size={24} />
+                  <ChevronRight className="text-gray-400 flex-shrink-0" size={20} />
                 )}
               </button>
               
               {isExpanded && (
-                <div className="px-6 pb-6">
-                  <ul className="space-y-3">
+                <div className="px-4 sm:px-6 pb-4 sm:pb-6">
+                  <ul className="space-y-2 sm:space-y-3">
                     {phase.content.map((item, itemIndex) => (
-                      <li key={itemIndex} className="text-gray-300 leading-relaxed">
+                      <li key={itemIndex} className="text-sm sm:text-base text-gray-300 leading-relaxed">
                         • {item}
                       </li>
                     ))}
@@ -116,14 +116,14 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
       </div>
       
       <div className="text-center mt-12">
-        <div className="bg-gray-900/50 rounded-xl p-6 md:p-8 border border-gray-700 max-w-2xl mx-auto">
-          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+        <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-700 max-w-2xl mx-auto mx-4">
+          <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6">
             The difference between men who get responses and those who stay ghosted? 
             <span className="text-green-400 font-semibold">Understanding her psychology</span> and having the exact templates that work.
           </p>
           
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4">
-            <p className="text-orange-300 font-medium">
+          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3 sm:p-4">
+            <p className="text-sm sm:text-base text-orange-300 font-medium">
               Every hour you wait without the right strategy, your chances drop by 3-5%. 
               Stop guessing what to send.
             </p>

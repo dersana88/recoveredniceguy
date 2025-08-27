@@ -47,7 +47,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0f0f14] text-white">
       <Header />
       
-      <div className="max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 py-8 sm:py-12 md:py-24">
         <HeroSection 
           selectedTimeline={selectedTimeline}
           setSelectedTimeline={setSelectedTimeline}

@@ -120,32 +120,32 @@ export default function WhatsIncludedSection() {
 
   return (
     <section className="mb-16 md:mb-24 fade-in whats-included-section">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-8 sm:mb-12 px-4">
         Here's Exactly What You Get:
       </h2>
 
       {/* Main Guide */}
-      <div className="bg-gradient-to-br from-green-900/20 to-green-800/20 rounded-xl p-6 md:p-8 border border-green-500/30 mb-12">
+      <div className="bg-gradient-to-br from-green-900/20 to-green-800/20 rounded-xl p-4 sm:p-6 md:p-8 border border-green-500/30 mb-8 sm:mb-12 mx-4">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center space-x-4">
-            <span className="text-4xl">📚</span>
+            <span className="text-2xl sm:text-3xl md:text-4xl">📚</span>
             <div>
-              <h3 className="text-xl md:text-2xl font-bold text-green-400">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-400">
                 THE MAIN GUIDE: 5-PART RECOVERY SYSTEM
               </h3>
-              <span className="text-green-300 font-medium">127 pages</span>
+              <span className="text-sm sm:text-base text-green-300 font-medium">127 pages</span>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           {parts.map((part, index) => (
-            <div key={index} className="bg-gray-900/50 rounded-lg p-6 border border-gray-700">
-              <h4 className="text-lg font-semibold text-green-400 mb-2">
+            <div key={index} className="bg-gray-900/50 rounded-lg p-4 sm:p-6 border border-gray-700">
+              <h4 className="text-base sm:text-lg font-semibold text-green-400 mb-2">
                 {part.title}
               </h4>
               <span className="text-sm text-gray-400 mb-4 block">{part.pages}</span>
-              <ul className="space-y-2">
+              <ul className="space-y-1 sm:space-y-2">
                 {part.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="text-gray-300 text-sm leading-relaxed flex items-start">
                     <span className="text-green-400 mr-2 mt-1">•</span>
@@ -160,28 +160,28 @@ export default function WhatsIncludedSection() {
 
       {/* Bonus Guides */}
       <div className="mb-12">
-        <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-orange-400">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-6 sm:mb-8 text-orange-400 px-4">
           PLUS 4 BONUS GUIDES:
         </h3>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4">
           {bonuses.map((bonus, index) => (
-            <div key={index} className="bg-gradient-to-br from-orange-900/20 to-orange-800/20 rounded-lg p-6 border border-orange-500/30">
+            <div key={index} className="bg-gradient-to-br from-orange-900/20 to-orange-800/20 rounded-lg p-4 sm:p-6 border border-orange-500/30">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <bonus.icon className="text-orange-400" size={24} />
+                  <bonus.icon className="text-orange-400 flex-shrink-0" size={20} />
                   <div>
-                    <h4 className="text-lg font-semibold text-orange-400">
+                    <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-orange-400 leading-tight">
                       {bonus.title}
                     </h4>
-                    <span className="text-orange-300 text-sm font-medium">{bonus.value}</span>
+                    <span className="text-orange-300 text-xs sm:text-sm font-medium">{bonus.value}</span>
                   </div>
                 </div>
               </div>
-              <span className="text-sm text-gray-400 mb-4 block">{bonus.pages}</span>
-              <ul className="space-y-2">
+              <span className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4 block">{bonus.pages}</span>
+              <ul className="space-y-1 sm:space-y-2">
                 {bonus.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="text-gray-300 text-sm leading-relaxed flex items-start">
+                  <li key={itemIndex} className="text-gray-300 text-xs sm:text-sm leading-relaxed flex items-start">
                     <span className="text-orange-400 mr-2 mt-1">•</span>
                     {item}
                   </li>
@@ -193,39 +193,39 @@ export default function WhatsIncludedSection() {
       </div>
 
       {/* Lifetime Access */}
-      <div className="bg-gray-900/50 rounded-xl p-6 md:p-8 border border-gray-700 mb-12">
-        <h4 className="text-xl font-semibold text-center mb-6 text-blue-400">
+      <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-700 mb-8 sm:mb-12 mx-4">
+        <h4 className="text-lg sm:text-xl font-semibold text-center mb-4 sm:mb-6 text-blue-400">
           LIFETIME ACCESS INCLUDES:
         </h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4">
           {accessItems.map((item, index) => (
-            <div key={index} className="flex items-center space-x-3 text-gray-300">
-              <item.icon className="text-blue-400" size={20} />
-              <span>{item.text}</span>
+            <div key={index} className="flex items-center space-x-3 text-gray-300 justify-center">
+              <item.icon className="text-blue-400 flex-shrink-0" size={18} />
+              <span className="text-sm sm:text-base">{item.text}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Value Stack */}
-      <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 md:p-8 border border-gray-600">
-        <div className="space-y-3 mb-6">
+      <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-600 mx-4">
+        <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
           {valueStack.map((item, index) => (
-            <div key={index} className="flex justify-between items-center text-gray-300">
-              <span>{item.item}</span>
-              <span className="font-semibold">{item.value}</span>
+            <div key={index} className="flex justify-between items-center text-gray-300 text-sm sm:text-base">
+              <span className="pr-2">{item.item}</span>
+              <span className="font-semibold flex-shrink-0">{item.value}</span>
             </div>
           ))}
         </div>
         
         <div className="border-t border-gray-600 pt-4">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-lg font-semibold text-gray-300">Total Value:</span>
-            <span className="text-lg font-semibold text-gray-400 line-through">$324</span>
+            <span className="text-base sm:text-lg font-semibold text-gray-300">Total Value:</span>
+            <span className="text-base sm:text-lg font-semibold text-gray-400 line-through">$324</span>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-xl font-bold text-white">Today:</span>
-            <span className="text-2xl font-bold text-green-400">$99</span>
+            <span className="text-lg sm:text-xl font-bold text-white">Today:</span>
+            <span className="text-xl sm:text-2xl font-bold text-green-400">$99</span>
           </div>
         </div>
       </div>

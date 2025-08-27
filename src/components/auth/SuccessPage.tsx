@@ -48,25 +48,25 @@ export default function SuccessPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-6">
+    <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 sm:px-6 pt-safe pb-safe">
       <div className="max-w-2xl w-full text-center">
-        <div className="bg-gray-900/50 rounded-xl p-8 md:p-12 border border-gray-700">
+        <div className="bg-gray-900/50 rounded-xl p-6 sm:p-8 md:p-12 border border-gray-700">
           <div className="text-green-400 mb-6">
-            <CheckCircle size={64} className="mx-auto" />
+            <CheckCircle size={48} className="sm:w-16 sm:h-16 mx-auto" />
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
             Payment Successful!
           </h1>
 
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
             Your Ghost Recovery Protocol is ready for download
           </p>
 
           {orderDetails && (
-            <div className="bg-gray-800/50 rounded-lg p-6 mb-8 border border-gray-600">
-              <h3 className="text-lg font-semibold text-white mb-4">Order Details</h3>
-              <div className="space-y-2 text-gray-300">
+            <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-600">
+              <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Order Details</h3>
+              <div className="space-y-2 text-sm sm:text-base text-gray-300">
                 <div className="flex justify-between">
                   <span>Product:</span>
                   <span className="font-medium">{orderDetails.product}</span>
@@ -83,27 +83,27 @@ export default function SuccessPage() {
             </div>
           )}
 
-          <div className="space-y-4 mb-8">
+          <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
             <button
               onClick={handleDownload}
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-3"
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 sm:space-x-3"
             >
-              <Download size={24} />
+              <Download size={20} className="sm:w-6 sm:h-6" />
               <span>Download Your Guide Now</span>
             </button>
 
             <button
               onClick={handleContinue}
-              className="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center space-x-2"
+              className="w-full bg-gray-700 hover:bg-gray-600 text-white py-3 px-4 sm:px-6 rounded-lg font-medium text-sm sm:text-base transition-all duration-300 flex items-center justify-center space-x-2"
             >
               <span>Continue to Dashboard</span>
-              <ArrowRight size={20} />
+              <ArrowRight size={18} className="sm:w-5 sm:h-5" />
             </button>
           </div>
 
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6">
-            <h4 className="text-orange-400 font-semibold mb-2">Important:</h4>
-            <p className="text-gray-300 text-sm leading-relaxed">
+          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6">
+            <h4 className="text-sm sm:text-base text-orange-400 font-semibold mb-2">Important:</h4>
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
               Save this guide to your device immediately. Check your email for the download link and receipt. 
               If you have any issues, contact support with your order ID.
             </p>

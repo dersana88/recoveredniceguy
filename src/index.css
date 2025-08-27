@@ -62,7 +62,47 @@ body {
 /* Mobile sticky footer padding */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 80px;
+    padding-bottom: 100px;
+  }
+}
+
+/* iPhone 16 and newer devices with Dynamic Island */
+@media screen and (max-width: 430px) and (min-height: 932px) {
+  body {
+    padding-top: env(safe-area-inset-top, 44px);
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 34px));
+  }
+}
+
+/* iPhone 16 Pro and Pro Max */
+@media screen and (max-width: 440px) and (min-height: 956px) {
+  body {
+    padding-top: env(safe-area-inset-top, 47px);
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 34px));
+  }
+}
+
+/* Safe area utilities */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Improved text readability on small screens */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+  
+  p {
+    line-height: 1.6;
   }
 }
 

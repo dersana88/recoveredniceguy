@@ -24,11 +24,11 @@ export default function MindReadingChecklist() {
 
   return (
     <section className="mb-16 md:mb-24 fade-in">
-      <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
+      <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-center mb-8 sm:mb-12 px-4">
         Here's What You've Done In The Last 48 Hours:
       </h2>
 
-      <div className="space-y-4 mb-8">
+      <div className="space-y-3 sm:space-y-4 mb-8 px-4">
         {checklistItems.map((item, index) => (
           <label key={index} className="flex items-start space-x-4 cursor-pointer group">
             <div className="relative">
@@ -50,7 +50,7 @@ export default function MindReadingChecklist() {
                 )}
               </div>
             </div>
-            <span className="text-lg leading-relaxed group-hover:text-gray-300 transition-colors">
+            <span className="text-base sm:text-lg leading-relaxed group-hover:text-gray-300 transition-colors">
               {item}
             </span>
           </label>
@@ -58,13 +58,13 @@ export default function MindReadingChecklist() {
       </div>
 
       <div className="text-center">
-        <div className="text-xl font-semibold mb-4">
+        <div className="text-lg sm:text-xl font-semibold mb-4">
           <span className="text-orange-400 count-up">{checkedItems.length}</span> of 7
         </div>
         
         {checkedItems.length >= 4 && (
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6 fade-in">
-            <p className="text-orange-300 text-lg font-medium">
+          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6 fade-in mx-4">
+            <p className="text-orange-300 text-base sm:text-lg font-medium">
               This isn't coincidence. You found this page because you need it.
             </p>
           </div>
