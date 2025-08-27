@@ -148,7 +148,7 @@ export default function WhatsIncludedSection() {
       {/* Bonus Guides */}
       <div className="mb-12">
         <h3 className="text-xl md:text-2xl font-bold text-center mb-8 text-orange-400">
-          PLUS 3 BONUS GUIDES:
+          PLUS 4 BONUS GUIDES:
         </h3>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
