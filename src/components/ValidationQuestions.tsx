@@ -18,9 +18,14 @@ export default function ValidationQuestions() {
     },
     {
       q: "Was I being too intense with my texting?",
+      a: "If you're asking this question, probably yes."
+    },
     {
       q: "Should I break the no contact rule?",
       a: "Not with another \"hey\" or \"everything okay?\" - those never work."
+    }
+  ];
+
   const scrollToWhatsIncluded = () => {
     const whatsIncludedSection = document.querySelector('.whats-included-section');
     if (whatsIncludedSection) {
