@@ -73,7 +73,7 @@ export default function ProductContentsSection() {
         <div className="text-sm sm:text-base text-gray-300 leading-relaxed space-y-3 sm:space-y-4 mb-6 sm:mb-8">
           <p>
             After analyzing <span className="text-green-400 font-semibold">1,847 documented ghost scenarios</span> between 2017-2023, 
-            I discovered that ghosting isn't random—it follows predictable psychological patterns. She's not arbitrarily ignoring you. 
+            I discovered that ghosting isn't random—it follows predictable psychological patterns. She\'s not arbitrarily ignoring you. 
             She's in one of five specific mental states, each requiring a different recovery approach.
           </p>
           
@@ -146,7 +146,7 @@ export default function ProductContentsSection() {
         <div className="text-sm sm:text-base text-gray-300 leading-relaxed space-y-3 sm:space-y-4 text-center">
           <p>
             This system documents patterns from <span className="text-green-400 font-semibold">1,847 actual ghost recoveries</span>—not 
-            theoretical advice from dating coaches or "alpha male" posturing. These templates represent 
+            theoretical advice from dating coaches or "alpha male\" posturing. These templates represent 
             <span className="text-orange-400 font-semibold"> $15,000 worth</span> of professional coaching, therapy sessions, 
             and documented trial-and-error, distilled into what actually generates responses.
           </p>
