@@ -95,10 +95,8 @@ export default function WhatsIncludedSection() {
   ];
 
   const accessItems = [
-    { icon: Users, text: "Private Discord Community (500+ members)" },
     { icon: Mail, text: "Direct Email Support (30 days)" },
     { icon: RefreshCw, text: "Monthly Template Updates" },
-    { icon: Phone, text: "Weekly Q&A Calls (First month)" }
   ];
 
   const valueStack = [
