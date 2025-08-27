@@ -1,10 +1,19 @@
 import React from 'react';
+import { useStripe } from '../hooks/useStripe';
+import { products } from '../stripe-config';
 import { BookOpen, Clock, Users, Calculator, AlertTriangle, Gift, Download, Shield } from 'lucide-react';
 
 export default function ProductContentsSection() {
+  const { createCheckoutSession, loading } = useStripe();
+  const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
+
   const handlePurchase = () => {
-    console.log('Purchase button clicked');
-    // Add purchase logic here
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
   };
 
   const features = [
@@ -154,7 +163,9 @@ export default function ProductContentsSection() {
       <div className="text-center bg-gray-900/50 rounded-xl p-6 md:p-8 border border-gray-700">
         <div className="mb-6">
           <div className="text-lg text-gray-400 mb-2">Investment:</div>
-          <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2">$99</div>
+          <div className="text-4xl md:text-5xl font-bold text-green-400 mb-2">
+            ${ghostRecoveryGuide?.price || 99}
+          </div>
           <div className="text-gray-400 italic">
             (Less than two therapy sessions wondering why she's not responding)
           </div>
@@ -183,10 +194,17 @@ export default function ProductContentsSection() {
         <div className="text-center">
           <button 
             onClick={handlePurchase}
-            className="inline-flex items-center space-x-3 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow mb-6"
+            disabled={loading}
+            className="inline-flex items-center space-x-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-8 py-4 rounded-lg font-semibold text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-6"
           >
-            <span>Get The Ghost Recovery Protocol</span>
-            <Download size={24} />
+            {loading ? (
+              <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              <>
+                <span>Get The Ghost Recovery Protocol</span>
+                <Download size={24} />
+              </>
+            )}
           </button>
           
           <p className="text-gray-400 mb-4">

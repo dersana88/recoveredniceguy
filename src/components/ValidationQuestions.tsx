@@ -1,7 +1,12 @@
 import React from 'react';
+import { useStripe } from '../hooks/useStripe';
+import { products } from '../stripe-config';
 import { ArrowRight } from 'lucide-react';
 
 export default function ValidationQuestions() {
+  const { createCheckoutSession, loading } = useStripe();
+  const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
+
   const questions = [
     {
       q: "Should I assume I've been ghosted?",
@@ -22,7 +27,12 @@ export default function ValidationQuestions() {
   ];
 
   const scrollToSolution = () => {
-    document.querySelector('#solution-section')?.scrollIntoView({ behavior: 'smooth' });
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
   };
 
   return (
@@ -47,10 +57,17 @@ export default function ValidationQuestions() {
       <div className="text-center">
         <button 
           onClick={scrollToSolution}
-          className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow"
+          disabled={loading}
+          className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow"
         >
-          <span>Show Me What Actually Works</span>
-          <ArrowRight size={20} />
+          {loading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          ) : (
+            <>
+              <span>Show Me What Actually Works</span>
+              <ArrowRight size={20} />
+            </>
+          )}
         </button>
       </div>
     </section>

@@ -1,7 +1,12 @@
 import React from 'react';
+import { useStripe } from '../hooks/useStripe';
+import { products } from '../stripe-config';
 import { ArrowRight } from 'lucide-react';
 
 export default function FinalSection() {
+  const { createCheckoutSession, loading } = useStripe();
+  const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
+
   const paths = [
     {
       title: "Without Protocol:",
@@ -30,7 +35,12 @@ export default function FinalSection() {
   ];
 
   const handleFinalCTA = () => {
-    console.log('Final CTA clicked');
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
   };
 
   return (
@@ -75,13 +85,20 @@ export default function FinalSection() {
 
         <button 
           onClick={handleFinalCTA}
-          className="inline-flex items-center space-x-3 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow mb-6"
+          disabled={loading}
+          className="inline-flex items-center space-x-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-8 py-4 rounded-lg font-semibold text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-6"
         >
-          <span>Stop The Mad Phone-Checking Cycle</span>
-          <ArrowRight size={24} />
+          {loading ? (
+            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          ) : (
+            <>
+              <span>Stop The Mad Phone-Checking Cycle</span>
+              <ArrowRight size={24} />
+            </>
+          )}
         </button>
         
-        <div className="text-gray-400">$99 - Instant Download</div>
+        <div className="text-gray-400">${ghostRecoveryGuide?.price || 99} - Instant Download</div>
       </div>
 
       <div className="text-center mt-8 p-6 border-t border-gray-700">
