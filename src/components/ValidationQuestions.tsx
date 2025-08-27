@@ -18,21 +18,17 @@ export default function ValidationQuestions() {
     },
     {
       q: "Was I being too intense with my texting?",
-      a: "The real question: Why does silence make you blame yourself?"
-    },
     {
       q: "Should I break the no contact rule?",
       a: "Not with another \"hey\" or \"everything okay?\" - those never work."
-    }
-  ];
-
-  const scrollToSolution = () => {
-    if (!ghostRecoveryGuide) return;
-    
-    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
-      .catch(error => {
-        console.error('Purchase failed:', error);
+  const scrollToWhatsIncluded = () => {
+    const whatsIncludedSection = document.querySelector('.whats-included-section');
+    if (whatsIncludedSection) {
+      whatsIncludedSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
+    }
   };
 
   return (
@@ -56,18 +52,11 @@ export default function ValidationQuestions() {
 
       <div className="text-center">
         <button 
-          onClick={scrollToSolution}
-          disabled={loading}
-          className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow"
+          onClick={scrollToWhatsIncluded}
+          className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow"
         >
-          {loading ? (
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-          ) : (
-            <>
-              <span>Show Me What Actually Works</span>
-              <ArrowRight size={20} />
-            </>
-          )}
+          <span>Show Me What Actually Works</span>
+          <ArrowRight size={20} />
         </button>
       </div>
     </section>

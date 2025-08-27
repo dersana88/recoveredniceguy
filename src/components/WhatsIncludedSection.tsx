@@ -110,7 +110,7 @@ export default function WhatsIncludedSection() {
   ];
 
   return (
-    <section className="mb-16 md:mb-24 fade-in">
+    <section className="mb-16 md:mb-24 fade-in whats-included-section">
       <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
         Here's Exactly What You Get:
       </h2>
