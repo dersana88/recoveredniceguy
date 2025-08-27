@@ -95,10 +95,8 @@ export default function WhatsIncludedSection() {
   ];
 
   const accessItems = [
-    { icon: Mail, text: "Direct Email Support (30 days)" },
     { icon: RefreshCw, text: "Monthly Template Updates" },
   ];
-
   const valueStack = [
     { item: "Main Guide (127 pages):", value: "$99" },
     { item: "Psychology Decoder (31 pages):", value: "$47" },
