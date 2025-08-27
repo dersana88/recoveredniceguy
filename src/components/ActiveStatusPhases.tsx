@@ -11,38 +11,38 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
 
   const phases = [
     {
-      title: "Hour 0-24: She Hasn't Decided Yet",
+      title: "Day 1 (0-24 Hours): The Decision Window",
       content: [
-        "She saw your message. She's thinking about it.",
-        "That \"active but not replying\" means she's DECIDING, not ignoring.",
-        "What you do next determines everything."
+        "78% recovery rate - Your highest chance window",
+        "She's actively weighing her options about you right now",
+        "The right move here locks in a response within 6 hours"
       ],
       timelineMatch: ['less-than-24h']
     },
     {
-      title: "Hour 24-72: The Testing Window", 
+      title: "Day 2-3 (24-72 Hours): The Make-or-Break Zone",
       content: [
-        "She's waiting to see if you'll send the dreaded double text.",
-        "One desperate message = confirmed needy in her mind.",
-        "The right message here gets 67% response rate."
+        "67% recovery rate with the Phoenix Protocol",
+        "She's testing your emotional control and confidence level",
+        "One wrong move drops your chances to under 20%"
       ],
       timelineMatch: ['3-days']
     },
     {
-      title: "Hour 72-168: You're Being Archived",
+      title: "Day 3-7 (72-168 Hours): The Archive Phase",
       content: [
-        "Moving from \"guy I'm talking to\" to \"guy who was texting me\"",
-        "Like closing a browser tab she's done with.",
-        "Only the Phoenix Protocol works here (31% success)."
+        "31% recovery rate - Requires advanced strategy",
+        "You're shifting from 'current interest' to 'past conversation'",
+        "Only the Nuclear Option breaks through this mental barrier"
       ],
       timelineMatch: ['1-week']
     },
     {
-      title: "After Day 7: Digital Death",
+      title: "Week 2+ (168+ Hours): The Resurrection Challenge",
       content: [
-        "You're now in the same category as her high school ex.",
-        "Would take something dramatic to resurrect this.",
-        "12% success rate, requires nuclear option."
+        "12% recovery rate - Last resort territory",
+        "You're now filed under 'guys from my past'",
+        "Success requires perfect timing + dramatic pattern interrupt"
       ],
       timelineMatch: ['2-weeks-plus']
     }
