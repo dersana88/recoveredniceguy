@@ -5,7 +5,6 @@ import ValidationQuestions from './ValidationQuestions';
 import SymptomsGrid from './SymptomsGrid';
 import ActiveStatusPhases from './ActiveStatusPhases';
 import ProductContentsSection from './ProductContentsSection';
-import TestimonialsSection from './TestimonialsSection';
 import PricingSection from './PricingSection';
 import FinalSection from './FinalSection';
 import StickyFooter from './StickyFooter';
@@ -61,8 +60,6 @@ export default function HomePage() {
         <ActiveStatusPhases selectedTimeline={selectedTimeline} />
         
         <PricingSection />
-        
-        <TestimonialsSection />
         
         <FinalSection />
       </div>
