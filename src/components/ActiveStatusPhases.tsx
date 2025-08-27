@@ -11,38 +11,42 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
 
   const phases = [
     {
-      title: "Day 1 (0-24 Hours): The Decision Window",
+      title: "She's Online But Ignoring You - Here's Why:",
       content: [
-        "78% recovery rate - Your highest chance window",
-        "She's actively weighing her options about you right now",
-        "The right move here locks in a response within 6 hours"
+        "She sees your message notification every time she opens her phone",
+        "She's not 'too busy' - she replied to 3 other people today",
+        "She's in one of 5 psychological states (and each requires a different approach)",
+        "The wrong message now = permanent archive status"
       ],
       timelineMatch: ['less-than-24h']
     },
     {
-      title: "Day 2-3 (24-72 Hours): The Make-or-Break Zone",
+      title: "The 72-Hour Psychology Shift:",
       content: [
-        "67% recovery rate with the Phoenix Protocol",
-        "She's testing your emotional control and confidence level",
-        "One wrong move drops your chances to under 20%"
+        "Hour 0-24: She's deciding if you're worth her energy",
+        "Hour 24-48: She's testing your emotional reaction to silence",
+        "Hour 48-72: She's moving you from 'current interest' to 'past conversation'",
+        "After 72 hours: You need advanced psychology to break through"
       ],
       timelineMatch: ['3-days']
     },
     {
-      title: "Day 3-7 (72-168 Hours): The Archive Phase",
+      title: "Why 'Hey, Everything Okay?' Never Works:",
       content: [
-        "31% recovery rate - Requires advanced strategy",
-        "You're shifting from 'current interest' to 'past conversation'",
-        "Only the Nuclear Option breaks through this mental barrier"
+        "It signals you don't understand why she went silent",
+        "Shows you're emotionally reactive (exactly what she's avoiding)",
+        "Puts pressure on her to explain herself",
+        "Makes you look like every other guy who got ghosted"
       ],
       timelineMatch: ['1-week']
     },
     {
-      title: "Week 2+ (168+ Hours): The Resurrection Challenge",
+      title: "What Actually Gets Responses:",
       content: [
-        "12% recovery rate - Last resort territory",
-        "You're now filed under 'guys from my past'",
-        "Success requires perfect timing + dramatic pattern interrupt"
+        "Messages that show you understand her psychology",
+        "Timing that works with her mental state, not against it",
+        "Templates that create curiosity instead of pressure",
+        "The exact words that 67% of women respond to within 6 hours"
       ],
       timelineMatch: ['2-weeks-plus']
     }
@@ -57,6 +61,13 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
       <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
         Here's What "Active 12 Minutes Ago" Actually Means:
       </h2>
+      
+      <div className="text-center mb-8">
+        <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          She's not ignoring your message because she didn't see it. She's ignoring it because 
+          <span className="text-orange-400 font-semibold"> she knows exactly what to expect</span> if she responds.
+        </p>
+      </div>
 
       <div className="space-y-4">
         {phases.map((phase, index) => {
@@ -102,6 +113,22 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
             </div>
           );
         })}
+      </div>
+      
+      <div className="text-center mt-12">
+        <div className="bg-gray-900/50 rounded-xl p-6 md:p-8 border border-gray-700 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+            The difference between men who get responses and those who stay ghosted? 
+            <span className="text-green-400 font-semibold">Understanding her psychology</span> and having the exact templates that work.
+          </p>
+          
+          <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4">
+            <p className="text-orange-300 font-medium">
+              Every hour you wait without the right strategy, your chances drop by 3-5%. 
+              Stop guessing what to send.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
