@@ -65,7 +65,7 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
       <div className="text-center mb-6 sm:mb-8">
         <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto px-4">
           She's not ignoring your message because she didn't see it. She's ignoring it because 
-          <span className="text-green-400 font-semibold"> Understanding her psychology</span> and having the exact templates that work.
+          <span className="text-orange-400 font-semibold"> she knows exactly what to expect</span> if she responds.
         </p>
       </div>
 
