@@ -242,20 +242,15 @@ export default function WhatsIncludedSection() {
             Right now beeing ghosted is not your fault, but it will be if you don't take action.
           </p>
           
-          <button 
-            onClick={handlePurchase}
-            disabled={loading}
-            className="inline-flex items-center space-x-2 sm:space-x-3 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow"
+          <a 
+            href="https://buy.stripe.com/fZucN51iN6Ub4LVfLC28800"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 sm:space-x-3 bg-red-600 hover:bg-red-700 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow"
           >
-            {loading ? (
-              <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-            ) : (
-              <>
-                <span>End The Torture Now</span>
-                <Download size={20} className="sm:w-6 sm:h-6" />
-              </>
-            )}
-          </button>
+            <span>End The Torture Now</span>
+            <Download size={20} className="sm:w-6 sm:h-6" />
+          </a>
         </div>
       </div>
     </section>
