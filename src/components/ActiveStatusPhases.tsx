@@ -119,7 +119,8 @@ export default function ActiveStatusPhases({ selectedTimeline }: ActiveStatusPha
         <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-700 max-w-2xl mx-auto mx-4">
           <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-4 sm:mb-6">
             The difference between men who get responses and those who stay ghosted? 
-            <span className="text-green-400 font-semibold" >Understanding her psychology</span> and having the exact templates that work.
+            <br />
+            <span className="text-green-400 font-semibold">Understanding her psychology</span> and having the exact templates that work.
           </p>
           
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-3 sm:p-4">
