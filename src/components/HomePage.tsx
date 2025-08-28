@@ -17,7 +17,6 @@ import { TimelineOption } from '../types/timeline';
 
 export default function HomePage() {
   const [selectedTimeline, setSelectedTimeline] = useState<TimelineOption>('3-days');
-  const [currentHour, setCurrentHour] = useState(72);
 
   useScrollAnimations();
 
@@ -34,15 +33,6 @@ export default function HomePage() {
     localStorage.setItem('ghost-timeline', selectedTimeline);
   }, [selectedTimeline]);
 
-  // Hour counter that increments every 60 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHour(prev => prev + 1);
-    }, 60000); // 1 minute
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#0f0f14] text-white">
       <Header />
@@ -51,7 +41,6 @@ export default function HomePage() {
         <HeroSection 
           selectedTimeline={selectedTimeline}
           setSelectedTimeline={setSelectedTimeline}
-          currentHour={currentHour}
         />
         
         <TestimonialSingle 

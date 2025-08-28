@@ -3,16 +3,11 @@ import { TimelineOption, timelineOptions } from '../types/timeline';
 
 interface RecoveryMeterProps {
   selectedTimeline: TimelineOption;
-  currentHour: number;
 }
 
-export default function RecoveryMeter({ selectedTimeline, currentHour }: RecoveryMeterProps) {
-  const [displayHour, setDisplayHour] = useState(currentHour);
+export default function RecoveryMeter({ selectedTimeline }: RecoveryMeterProps) {
   const timeline = timelineOptions[selectedTimeline];
-
-  useEffect(() => {
-    setDisplayHour(currentHour);
-  }, [currentHour]);
+  const displayHour = timeline.hours;
 
   const getProgressColor = (chance: number) => {
     if (chance >= 60) return 'bg-green-500';

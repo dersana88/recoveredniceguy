@@ -139,6 +139,21 @@ export default function WhatsIncludedSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+          <button 
+            onClick={handlePurchase}
+            disabled={loading}
+            className="inline-flex items-center space-x-2 sm:space-x-3 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-6 sm:mb-8"
+          >
+            {loading ? (
+              <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            ) : (
+              <>
+                <span>End The Torture Now</span>
+                <Download size={20} className="sm:w-6 sm:h-6" />
+              </>
+            )}
+          </button>
+          
           {parts.map((part, index) => (
             <div key={index} className="bg-gray-900/50 rounded-lg p-4 sm:p-6 border border-gray-700">
               <h4 className="text-base sm:text-lg font-semibold text-green-400 mb-2">

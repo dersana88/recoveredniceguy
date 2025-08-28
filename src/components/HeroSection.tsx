@@ -6,10 +6,9 @@ import { TimelineOption } from '../types/timeline';
 interface HeroSectionProps {
   selectedTimeline: TimelineOption;
   setSelectedTimeline: (timeline: TimelineOption) => void;
-  currentHour: number;
 }
 
-export default function HeroSection({ selectedTimeline, setSelectedTimeline, currentHour }: HeroSectionProps) {
+export default function HeroSection({ selectedTimeline, setSelectedTimeline }: HeroSectionProps) {
   return (
     <section className="text-center mb-16 md:mb-24 fade-in">
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-tight px-2">
@@ -36,7 +35,6 @@ export default function HeroSection({ selectedTimeline, setSelectedTimeline, cur
 
       <RecoveryMeter 
         selectedTimeline={selectedTimeline}
-        currentHour={currentHour}
       />
     </section>
   );

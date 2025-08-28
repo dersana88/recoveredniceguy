@@ -86,14 +86,14 @@ export default function FinalSection() {
         <button 
           onClick={handleFinalCTA}
           disabled={loading}
-          className="inline-flex items-center space-x-2 sm:space-x-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg md:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-4 sm:mb-6"
+          className="inline-flex items-center space-x-2 sm:space-x-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-lg font-semibold text-lg sm:text-xl md:text-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-6 sm:mb-8"
         >
           {loading ? (
-            <div className="w-5 h-5 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            <div className="w-6 h-6 sm:w-7 sm:h-7 border-2 border-white border-t-transparent rounded-full animate-spin" />
           ) : (
             <>
               <span>Stop The Mad Phone-Checking Cycle</span>
-              <ArrowRight size={20} className="sm:w-6 sm:h-6" />
+              <ArrowRight size={24} className="sm:w-7 sm:h-7" />
             </>
           )}
         </button>
