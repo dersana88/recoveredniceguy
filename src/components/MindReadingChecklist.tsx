@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check } from 'lucide-react';
+import PickedCounter from './PickedCounter';
 
 export default function MindReadingChecklist() {
   const [checkedItems, setCheckedItems] = useState<number[]>([]);
@@ -57,11 +58,9 @@ export default function MindReadingChecklist() {
         ))}
       </div>
 
+      <PickedCounter />
+      
       <div className="text-center">
-        <div className="text-lg sm:text-xl font-semibold mb-4">
-            <span className="text-green-400 font-semibold"> Understanding her psychology</span> and having the exact templates that work.
-        </div>
-        
         {checkedItems.length >= 4 && (
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6 fade-in mx-4">
             <p className="text-orange-300 text-base sm:text-lg font-medium">
