@@ -1,7 +1,15 @@
 import React from 'react';
 import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone, AlertTriangle } from 'lucide-react';
+import { useStripe } from '../hooks/useStripe';
+import { products } from '../stripe-config';
 
 export default function WhatsIncludedSection() {
+  const { createCheckoutSession, loading } = useStripe();
+
+  const handlePurchase = async () => {
+    await createCheckoutSession(products.ghostRecoveryGuide);
+  };
+
   const parts = [
     {
       title: "Part 1: DIAGNOSTIC DECODER",
