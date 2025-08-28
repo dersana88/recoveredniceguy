@@ -239,7 +239,7 @@ export default function WhatsIncludedSection() {
         
         <div className="mt-6 sm:mt-8 text-center">
           <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-            Right now it is not your fault, but it will be if you don't take action.
+            Right now beeing ghosted is not your fault, but it will be if you don't take action.
           </p>
           
           <button 
