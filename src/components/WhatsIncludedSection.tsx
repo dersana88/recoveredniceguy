@@ -1,7 +1,21 @@
 import React from 'react';
+import { useStripe } from '../hooks/useStripe';
+import { products } from '../stripe-config';
 import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone, AlertTriangle } from 'lucide-react';
 
 export default function WhatsIncludedSection() {
+  const { createCheckoutSession, loading } = useStripe();
+  const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
+
+  const handlePurchase = () => {
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
+  };
+
   const parts = [
     {
       title: "Part 1: DIAGNOSTIC DECODER",
@@ -228,6 +242,27 @@ export default function WhatsIncludedSection() {
             <span className="text-xl sm:text-2xl font-bold text-green-400">$99</span>
           </div>
         </div>
+      </div>
+
+      {/* Add CTA Button */}
+      <div className="text-center mt-8 sm:mt-12">
+        <button 
+          onClick={handlePurchase}
+          disabled={loading}
+          className="inline-flex items-center space-x-2 sm:space-x-3 bg-red-600 hover:bg-red-700 disabled:bg-gray-600 text-white px-6 sm:px-8 md:px-10 py-4 sm:py-5 rounded-lg font-semibold text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow"
+        >
+          {loading ? (
+            <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          ) : (
+            <>
+              <span>End The Torture Now</span>
+              <AlertTriangle size={24} />
+            </>
+          )}
+        </button>
+        <p className="text-sm sm:text-base text-gray-400 mt-3">
+          Stop the obsessive phone checking. Get your answer.
+        </p>
       </div>
     </section>
   );

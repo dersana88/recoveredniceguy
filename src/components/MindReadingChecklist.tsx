@@ -59,7 +59,7 @@ export default function MindReadingChecklist() {
 
       <div className="text-center">
         <div className="text-lg sm:text-xl font-semibold mb-4">
-          <span className="text-orange-400 count-up">{checkedItems.length}</span> of 7
+            <span className="text-green-400 font-semibold"> Understanding her psychology</span> and having the exact templates that work.
         </div>
         
         {checkedItems.length >= 4 && (
