@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone, AlertTriangle } from 'lucide-react';
+import { BookOpen, Brain, Shield, Zap, Users, Mail, RefreshCw, Phone, AlertTriangle, Download } from 'lucide-react';
 import { useStripe } from '../hooks/useStripe';
 import { products } from '../stripe-config';
 
