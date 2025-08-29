@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
 
 export function useStripe() {
   const [loading, setLoading] = useState(false);
@@ -8,21 +7,10 @@ export function useStripe() {
     setLoading(true);
 
     try {
-      const baseUrl = window.location.origin;
-      const successUrl = `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
-      const cancelUrl = `${baseUrl}/`;
-
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/stripe-checkout`, {
+      const response = await fetch('/.netlify/functions/create-checkout-session', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          price_id: priceId,
-          success_url: successUrl,
-          cancel_url: cancelUrl,
-          mode,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId, mode }),
       });
 
       if (!response.ok) {
@@ -45,48 +33,5 @@ export function useStripe() {
     }
   };
 
-  const getSubscription = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('stripe_user_subscriptions')
-        .select('*')
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error fetching subscription:', error);
-        return null;
-      }
-
-      return data;
-    } catch (error) {
-      console.error('Error fetching subscription:', error);
-      return null;
-    }
-  };
-
-  const getOrders = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('stripe_user_orders')
-        .select('*')
-        .order('order_date', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching orders:', error);
-        return [];
-      }
-
-      return data || [];
-    } catch (error) {
-      console.error('Error fetching orders:', error);
-      return [];
-    }
-  };
-
-  return {
-    createCheckoutSession,
-    getSubscription,
-    getOrders,
-    loading,
-  };
+  return { createCheckoutSession, loading };
 }
