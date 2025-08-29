@@ -49,8 +49,8 @@ exports.handler = async (event) => {
     // Get site URL from environment or use default
     const siteUrl = process.env.SITE_URL || process.env.URL || 'https://recoveredniceguy.com';
     
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
+    // Create base session config
+    const sessionConfig = {
       payment_method_types: ['card'],
       line_items: [{
         price: priceId,
@@ -59,22 +59,32 @@ exports.handler = async (event) => {
       mode: mode,
       success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}`,
-      // Wichtig für digitale Produkte
-      customer_creation: 'always',
       // Metadata für spätere Verarbeitung im Webhook
       metadata: {
         product: 'ghost-recovery-protocol',
         price_id: priceId
       },
-      // Email collection für digitale Lieferung
-      customer_email: requestBody.customer_email || null,
       // Erlaubt Promotion Codes
       allow_promotion_codes: true,
       // Automatische Steuerberechnung (optional)
       automatic_tax: {
         enabled: false
       }
-    });
+    };
+
+    // NUR Email hinzufügen wenn sie valid ist
+    if (requestBody.customer_email && 
+        requestBody.customer_email.includes('@') && 
+        requestBody.customer_email.length > 3) {
+      sessionConfig.customer_email = requestBody.customer_email;
+      console.log('📧 Setting customer email:', requestBody.customer_email);
+    } else {
+      console.log('📧 No valid email provided, Stripe will collect it');
+      // Stripe wird die Email selbst im Checkout sammeln
+    }
+
+    // Create Stripe checkout session
+    const session = await stripe.checkout.sessions.create(sessionConfig);
 
     console.log('✅ Checkout session created:', session.id);
     console.log('🔗 Checkout URL:', session.url);
