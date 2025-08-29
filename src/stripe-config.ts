@@ -14,7 +14,7 @@ export const products: Product[] = [
     name: 'Ghost Recovery Guide',
     description: '✓Complete 127-Page System✓ 15-Question Ghost Type Identifier Quiz✓ 72-Hour Recovery Timeline (Hour-by-Hour)✓ 23 Copy-Paste Message Templates (67% Success)✓ 4 Bonus Guides Worth $158 (FREE)Instant Download',
     mode: 'payment',
-    price: 99.00
+    price: 00.01
   }
 ];
 
