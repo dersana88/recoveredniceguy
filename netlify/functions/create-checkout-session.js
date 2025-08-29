@@ -27,67 +27,55 @@ exports.handler = async (event) => {
   }
 
   try {
-    console.log('📝 Received checkout request:', event.body);
-    
-    const requestBody = JSON.parse(event.body);
-    
-    // Handle both priceId and price_id for compatibility
-    const priceId = requestBody.priceId || requestBody.price_id;
-    const mode = requestBody.mode || 'payment';
-    
-    if (!priceId) {
-      console.error('❌ No price ID provided');
+    // Check if Stripe key exists
+    if (!process.env.STRIPE_SECRET_KEY) {
+      console.error('❌ STRIPE_SECRET_KEY is not set');
       return {
-        statusCode: 400,
+        statusCode: 500,
         headers,
-        body: JSON.stringify({ error: 'Price ID is required' })
+        body: JSON.stringify({ 
+          error: 'Server configuration error' 
+        })
       };
     }
 
-    console.log('🔄 Creating checkout session with price ID:', priceId);
+    const requestBody = JSON.parse(event.body);
     
-    // Get site URL from environment or use default
-    const siteUrl = process.env.SITE_URL || process.env.URL || 'https://recoveredniceguy.com';
+    // Get price ID - mit Fallback auf deine spezifische Price ID
+    const priceId = requestBody.priceId || 
+                    requestBody.price_id || 
+                    'price_1S1OHkEk4co9sYTKSsSpwUFm'; // Fallback auf deine Price ID
     
-    // Create base session config
-    const sessionConfig = {
+    const mode = requestBody.mode || 'payment';
+    
+    console.log('Creating session with Price ID:', priceId);
+    
+    // Get site URL
+    const siteUrl = process.env.SITE_URL || 'https://recoveredniceguy.com';
+    
+    // Create Stripe checkout session
+    const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
-        price: priceId
+        price: priceId,
         quantity: 1,
       }],
       mode: mode,
       success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}`,
-      // Metadata für spätere Verarbeitung im Webhook
+      cancel_url: siteUrl,
+      billing_address_collection: 'auto',
+      shipping_address_collection: {
+        allowed_countries: ['US', 'CA', 'GB', 'DE', 'FR', 'AU', 'NZ']
+      },
       metadata: {
         product: 'ghost-recovery-protocol',
         price_id: priceId
       },
-      // Erlaubt Promotion Codes
       allow_promotion_codes: true,
-      // Automatische Steuerberechnung (optional)
-      automatic_tax: {
-        enabled: false
-      }
-    };
+      locale: 'auto' // Automatische Spracherkennung
+    });
 
-    // NUR Email hinzufügen wenn sie valid ist
-    if (requestBody.customer_email && 
-        requestBody.customer_email.includes('@') && 
-        requestBody.customer_email.length > 3) {
-      sessionConfig.customer_email = requestBody.customer_email;
-      console.log('📧 Setting customer email:', requestBody.customer_email);
-    } else {
-      console.log('📧 No valid email provided, Stripe will collect it');
-      // Stripe wird die Email selbst im Checkout sammeln
-    }
-
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create(sessionConfig);
-
-    console.log('✅ Checkout session created:', session.id);
-    console.log('🔗 Checkout URL:', session.url);
+    console.log('✅ Session created:', session.id);
 
     return {
       statusCode: 200,
@@ -99,31 +87,26 @@ exports.handler = async (event) => {
     };
     
   } catch (error) {
-    console.error('❌ Stripe error:', error);
+    console.error('Stripe Error:', error.message);
+    console.error('Error Type:', error.type);
+    console.error('Error Code:', error.code);
     
-    // Detaillierte Fehlerbehandlung
-    let errorMessage = 'An error occurred creating checkout session';
-    let statusCode = 500;
-
-    if (error.type === 'StripeInvalidRequestError') {
-      errorMessage = `Invalid request: ${error.message}`;
-      statusCode = 400;
-    } else if (error.type === 'StripeAPIError') {
-      errorMessage = 'Stripe API error. Please try again.';
-      statusCode = 502;
-    } else if (error.type === 'StripeConnectionError') {
-      errorMessage = 'Network error. Please check your connection.';
-      statusCode = 503;
+    // Spezifische Fehlermeldungen
+    let userMessage = 'Unable to create checkout session';
+    
+    if (error.code === 'resource_missing') {
+      userMessage = 'Product configuration error. Please contact support.';
     } else if (error.type === 'StripeAuthenticationError') {
-      errorMessage = 'Authentication failed. Check API keys.';
-      statusCode = 401;
+      userMessage = 'Payment system configuration error.';
+    } else if (error.type === 'StripeInvalidRequestError') {
+      userMessage = 'Invalid checkout request. Please try again.';
     }
-
+    
     return {
-      statusCode: statusCode,
+      statusCode: 400,
       headers,
       body: JSON.stringify({ 
-        error: errorMessage,
+        error: userMessage,
         details: process.env.NODE_ENV === 'development' ? error.message : undefined
       })
     };
