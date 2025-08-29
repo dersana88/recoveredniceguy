@@ -10,7 +10,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 'prod_SwCIyU94gSAJOS',
-    priceId: 'price_1S0Ju5Ek4co9sYTKV8rK8kbN',
+    priceId: 'price_1S1OHkEk4co9sYTKSsSpwUFm',
     name: 'Ghost Recovery Guide',
     description: 'Der Guide',
     mode: 'payment',
