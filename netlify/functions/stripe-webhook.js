@@ -35,25 +35,49 @@ exports.handler = async (event) => {
     };
   }
 
+  // Forward to n8n webhook
+  const n8nWebhookUrl = 'https://implementify.xyz/webhook/9f6ffb8e-1756-4120-b8fe-efcbb542f925/webhook';
+
   // Handle the event
   switch (stripeEvent.type) {
     case 'checkout.session.completed': {
       const session = stripeEvent.data.object;
       
-      console.log('💰 Payment successful!');
-      console.log('Customer:', session.customer_email);
-      console.log('Amount:', session.amount_total / 100, session.currency);
-      console.log('Session ID:', session.id);
+      console.log('💰 Payment successful! Forwarding to n8n...');
       
-      // Check if this is for the Ghost Recovery Protocol
-      if (session.metadata?.price_id === 'price_1S1OHkEk4co9sYTKSsSpwUFm') {
-        console.log('✅ Ghost Recovery Protocol purchased!');
-        
-        // TODO: Implement these actions:
-        // 1. Send download email with the guide
-        // 2. Save purchase to database
-        // 3. Add to email automation sequence
-        // 4. Track conversion in analytics
+      try {
+        // Send all relevant data to n8n
+        const response = await fetch(n8nWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'checkout.session.completed',
+            sessionId: session.id,
+            customerEmail: session.customer_email,
+            customerName: session.customer_details?.name,
+            amountPaid: session.amount_total / 100,
+            amountInCents: session.amount_total,
+            currency: session.currency,
+            paymentStatus: session.payment_status,
+            metadata: session.metadata,
+            productInfo: {
+              priceId: session.metadata?.price_id,
+              product: session.metadata?.product
+            },
+            stripeCustomerId: session.customer,
+            timestamp: new Date().toISOString(),
+            rawSession: session // Include full session object for flexibility
+          })
+        });
+
+        if (!response.ok) {
+          console.error('n8n webhook returned error:', response.status);
+        } else {
+          console.log('✅ Successfully forwarded to n8n');
+        }
+      } catch (error) {
+        console.error('Failed to forward to n8n:', error);
+        // Don't return error to Stripe - we still want to acknowledge receipt
       }
       
       break;
@@ -61,14 +85,46 @@ exports.handler = async (event) => {
     
     case 'checkout.session.expired': {
       const session = stripeEvent.data.object;
-      console.log('Session expired:', session.id);
-      // TODO: Send recovery email
+      console.log('Session expired, forwarding to n8n...');
+      
+      try {
+        await fetch(n8nWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'checkout.session.expired',
+            sessionId: session.id,
+            timestamp: new Date().toISOString(),
+            rawSession: session
+          })
+        });
+      } catch (error) {
+        console.error('Failed to forward expired session to n8n:', error);
+      }
+      
       break;
     }
     
     case 'payment_intent.payment_failed': {
       const paymentIntent = stripeEvent.data.object;
-      console.log('Payment failed:', paymentIntent.id);
+      console.log('Payment failed, forwarding to n8n...');
+      
+      try {
+        await fetch(n8nWebhookUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'payment_intent.payment_failed',
+            paymentIntentId: paymentIntent.id,
+            failureMessage: paymentIntent.last_payment_error?.message,
+            timestamp: new Date().toISOString(),
+            rawPaymentIntent: paymentIntent
+          })
+        });
+      } catch (error) {
+        console.error('Failed to forward payment failure to n8n:', error);
+      }
+      
       break;
     }
     
@@ -76,6 +132,7 @@ exports.handler = async (event) => {
       console.log(`Unhandled event type: ${stripeEvent.type}`);
   }
 
+  // Always return success to Stripe
   return {
     statusCode: 200,
     body: JSON.stringify({ received: true })
