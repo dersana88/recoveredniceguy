@@ -7,6 +7,15 @@ export default function FinalSection() {
   const { createCheckoutSession, loading } = useStripe();
   const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
 
+  const handlePurchase = () => {
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
+  };
+
   const paths = [
     {
       title: "Without Protocol:",
@@ -33,15 +42,6 @@ export default function FinalSection() {
       negative: false
     }
   ];
-
-  const handleFinalCTA = () => {
-    if (!ghostRecoveryGuide) return;
-    
-    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
-      .catch(error => {
-        console.error('Purchase failed:', error);
-      });
-  };
 
   return (
     <section className="fade-in">
@@ -84,7 +84,7 @@ export default function FinalSection() {
         </p>
 
         <button 
-          onClick={handleFinalCTA}
+          onClick={handlePurchase}
           disabled={loading}
           className="inline-flex items-center space-x-2 sm:space-x-3 bg-green-600 hover:bg-green-700 disabled:bg-gray-600 text-white px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 rounded-lg font-semibold text-lg sm:text-xl md:text-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:scale-100 pulse-slow mb-6 sm:mb-8"
         >
