@@ -1,35 +1,22 @@
 import React from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CheckCircle, Download, ArrowRight, AlertCircle } from 'lucide-react';
+import { CheckCircle, Download, ArrowRight } from 'lucide-react';
 
 export default function SuccessPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const sessionId = searchParams.get('session_id');
-  const isDev = searchParams.get('dev') === 'true';
 
   return (
     <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 sm:px-6">
       <div className="max-w-2xl w-full text-center">
         <div className="bg-gray-900/50 rounded-xl p-6 sm:p-8 md:p-12 border border-gray-700">
-          {isDev && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6">
-              <div className="flex items-center justify-center space-x-2 text-yellow-400 mb-2">
-                <AlertCircle size={20} />
-                <span className="font-semibold">Development Mode</span>
-              </div>
-              <p className="text-sm text-gray-300">
-                This is a mock success page. Real payments only work in production on Netlify.
-              </p>
-            </div>
-          )}
-
           <div className="text-green-400 mb-6">
             <CheckCircle size={48} className="sm:w-16 sm:h-16 mx-auto" />
           </div>
 
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-            {isDev ? 'Test Payment Successful!' : 'Payment Successful!'}
+            Payment Successful!
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
@@ -53,18 +40,12 @@ export default function SuccessPage() {
                   <span className="font-mono text-sm">{sessionId.slice(-8)}</span>
                 </div>
               )}
-              {isDev && (
-                <div className="flex justify-between">
-                  <span>Mode:</span>
-                  <span className="font-mono text-sm text-yellow-400">Development</span>
-                </div>
-              )}
             </div>
           </div>
 
           <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
             <button
-              onClick={() => isDev ? alert('Download functionality is disabled in development mode') : navigate('/')}
+              onClick={() => navigate('/')}
               className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 sm:space-x-3"
             >
               <Download size={20} className="sm:w-6 sm:h-6" />
@@ -81,13 +62,9 @@ export default function SuccessPage() {
           </div>
 
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6">
-            <h4 className="text-sm sm:text-base text-orange-400 font-semibold mb-2">
-              {isDev ? 'Development Note:' : 'Important:'}
-            </h4>
+            <h4 className="text-sm sm:text-base text-orange-400 font-semibold mb-2">Important:</h4>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              {isDev 
-                ? 'To test real payments, deploy this application to Netlify with your Stripe keys configured.'
-                : 'Check your email for the download link and receipt. Save this guide to your device immediately.'}
+              Check your email for the download link and receipt. Save this guide to your device immediately.
             </p>
           </div>
         </div>
