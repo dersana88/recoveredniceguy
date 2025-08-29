@@ -3,16 +3,7 @@
   functions = "netlify/functions"
   publish = "dist"
 
-[build.environment]
-  NODE_VERSION = "18"
-
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[functions]
-  "*" = {
-    node_bundler = "esbuild",
-    included_files = ["node_modules/**"]
-  }

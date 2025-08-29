@@ -1,66 +1,39 @@
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
 exports.handler = async (event) => {
-  // Dynamic import to avoid bundling issues
-  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-  
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS'
-  };
-
-  // Handle preflight
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers,
-      body: '',
-    };
-  }
-
+  // Only allow POST
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Method not allowed' })
+    return { 
+      statusCode: 405, 
+      body: 'Method Not Allowed',
+      headers: { 'Access-Control-Allow-Origin': '*' }
     };
   }
 
   try {
-    const { priceId, mode } = JSON.parse(event.body);
+    const { priceId } = JSON.parse(event.body);
     
-    if (!priceId) {
-      throw new Error('Price ID is required');
-    }
-
-    const siteUrl = process.env.SITE_URL || process.env.URL || 'https://recoveredniceguy.com';
-
+    // Create Stripe session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
-      mode: mode || 'payment',
-      success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: siteUrl,
-      automatic_tax: { enabled: false },
-      metadata: {
-        productId: 'ghost-recovery-guide'
-      }
+      line_items: [{
+        price: priceId,
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: `${process.env.SITE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: process.env.SITE_URL,
     });
 
     return {
       statusCode: 200,
-      headers,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ url: session.url })
     };
   } catch (error) {
-    console.error('Stripe error:', error);
     return {
-      statusCode: 500,
-      headers,
+      statusCode: 400,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ error: error.message })
     };
   }
