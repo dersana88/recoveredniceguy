@@ -53,7 +53,7 @@ exports.handler = async (event) => {
     const sessionConfig = {
       payment_method_types: ['card'],
       line_items: [{
-        price: price_1S1OHkEk4co9sYTKSsSpwUFm,
+        price: priceId
         quantity: 1,
       }],
       mode: mode,
@@ -62,7 +62,7 @@ exports.handler = async (event) => {
       // Metadata für spätere Verarbeitung im Webhook
       metadata: {
         product: 'ghost-recovery-protocol',
-        price_id: price_1S1OHkEk4co9sYTKSsSpwUFm
+        price_id: priceId
       },
       // Erlaubt Promotion Codes
       allow_promotion_codes: true,
