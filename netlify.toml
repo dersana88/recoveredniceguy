@@ -12,5 +12,7 @@
   status = 200
 
 [functions]
-  node_bundler = "esbuild"
-  included_files = ["node_modules/**"]
+  "*" = {
+    node_bundler = "esbuild",
+    included_files = ["node_modules/**"]
+  }

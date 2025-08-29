@@ -1,11 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { CheckCircle, Download, ArrowRight } from 'lucide-react';
+import { CheckCircle, Download, ArrowRight, AlertTriangle } from 'lucide-react';
 
 export default function SuccessPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const sessionId = searchParams.get('session_id');
+
+  useEffect(() => {
+    // Verify we have a real session ID
+    if (!sessionId || sessionId.startsWith('mock_')) {
+      console.error('Invalid session - no payment was processed');
+      // Optionally redirect back to home
+      // navigate('/');
+    }
+  }, [sessionId, navigate]);
+
+  // Show warning if no valid session
+  if (!sessionId || sessionId.startsWith('mock_')) {
+    return (
+      <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 sm:px-6">
+        <div className="max-w-2xl w-full text-center">
+          <div className="bg-red-900/50 rounded-xl p-6 sm:p-8 md:p-12 border border-red-700">
+            <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-4" />
+            <h1 className="text-2xl font-bold text-white mb-4">
+              Payment Not Processed
+            </h1>
+            <p className="text-gray-300 mb-6">
+              No payment was completed. This appears to be a test or development session.
+            </p>
+            <button
+              onClick={() => navigate('/')}
+              className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold"
+            >
+              Return to Homepage
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0f0f14] flex items-center justify-center px-4 sm:px-6">
@@ -34,18 +68,15 @@ export default function SuccessPage() {
                 <span>Amount:</span>
                 <span className="font-medium text-green-400">$99.00</span>
               </div>
-              {sessionId && (
-                <div className="flex justify-between">
-                  <span>Order ID:</span>
-                  <span className="font-mono text-sm">{sessionId.slice(-8)}</span>
-                </div>
-              )}
+              <div className="flex justify-between">
+                <span>Order ID:</span>
+                <span className="font-mono text-sm">{sessionId.slice(-8)}</span>
+              </div>
             </div>
           </div>
 
           <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
             <button
-              onClick={() => navigate('/')}
               className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 sm:space-x-3"
             >
               <Download size={20} className="sm:w-6 sm:h-6" />

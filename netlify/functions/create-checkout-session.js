@@ -1,13 +1,14 @@
 exports.handler = async (event) => {
-  // Dynamic import to avoid ESM/CommonJS bundling issues
-  const Stripe = (await import('stripe')).default;
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  // Dynamic import to avoid bundling issues
+  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
   
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
   };
 
+  // Handle preflight
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -26,6 +27,11 @@ exports.handler = async (event) => {
 
   try {
     const { priceId, mode } = JSON.parse(event.body);
+    
+    if (!priceId) {
+      throw new Error('Price ID is required');
+    }
+
     const siteUrl = process.env.SITE_URL || process.env.URL || 'https://recoveredniceguy.com';
 
     const session = await stripe.checkout.sessions.create({
@@ -39,6 +45,7 @@ exports.handler = async (event) => {
       mode: mode || 'payment',
       success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: siteUrl,
+      automatic_tax: { enabled: false },
       metadata: {
         productId: 'ghost-recovery-guide'
       }
