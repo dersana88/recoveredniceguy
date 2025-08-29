@@ -6,8 +6,15 @@ import { products } from '../stripe-config';
 export default function WhatsIncludedSection() {
   const { createCheckoutSession, loading } = useStripe();
 
+  const ghostRecoveryGuide = products.find(p => p.name === 'Ghost Recovery Guide');
+
   const handlePurchase = async () => {
-    await createCheckoutSession(products.ghostRecoveryGuide);
+    if (!ghostRecoveryGuide) return;
+    
+    createCheckoutSession(ghostRecoveryGuide.priceId, ghostRecoveryGuide.mode)
+      .catch(error => {
+        console.error('Purchase failed:', error);
+      });
   };
 
   const parts = [
