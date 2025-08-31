@@ -13,6 +13,15 @@ export default function SuccessPage() {
       console.error('Invalid session - no payment was processed');
       // Optionally redirect back to home
       // navigate('/');
+    } else {
+      // Track successful purchase conversion
+      if (typeof window !== 'undefined' && (window as any).rdt) {
+        (window as any).rdt('track', 'Purchase', {
+          conversion_id: sessionId,
+          value: 0.01,
+          currency: 'USD'
+        });
+      }
     }
   }, [sessionId, navigate]);
 
