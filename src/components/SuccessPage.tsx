@@ -54,7 +54,7 @@ export default function SuccessPage() {
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8">
-            Your Ghost Recovery Protocol is ready for download
+            Your Ghost Recovery Protocol has been sent to your email
           </p>
 
           <div className="bg-gray-800/50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-600">
@@ -76,12 +76,20 @@ export default function SuccessPage() {
           </div>
 
           <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-            <button
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center space-x-2 sm:space-x-3"
-            >
-              <Download size={20} className="sm:w-6 sm:h-6" />
-              <span>Download Your Guide Now</span>
-            </button>
+            <div className="bg-green-600/10 border border-green-500/30 rounded-lg p-4 sm:p-6 text-center">
+              <h3 className="text-lg sm:text-xl font-semibold text-green-400 mb-3">
+                📧 Check Your Email
+              </h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-2">
+                Your complete Ghost Recovery Protocol has been sent to your email address, including:
+              </p>
+              <ul className="text-left text-gray-300 text-sm space-y-1 max-w-md mx-auto">
+                <li>• 127-Page Main Guide (PDF)</li>
+                <li>• 4 Bonus Guides Worth $158</li>
+                <li>• Quick Start Instructions</li>
+                <li>• Message Templates Cheat Sheet</li>
+              </ul>
+            </div>
 
             <button
               onClick={() => navigate('/')}
@@ -95,7 +103,7 @@ export default function SuccessPage() {
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6">
             <h4 className="text-sm sm:text-base text-orange-400 font-semibold mb-2">Important:</h4>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              Check your email for the download link and receipt. Save this guide to your device immediately.
+              If you don't see the email within 5 minutes, check your spam folder. The email contains all your guides and comes from our secure delivery system. Save the files to your device for offline access.
             </p>
           </div>
         </div>
