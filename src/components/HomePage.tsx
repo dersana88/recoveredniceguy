@@ -15,6 +15,15 @@ import TestimonialDouble from './TestimonialDouble';
 import { useScrollAnimations } from '../hooks/useScrollAnimations';
 import { TimelineOption } from '../types/timeline';
 
+// Track VIEW_CONTENT event when page loads
+function trackViewContent() {
+  if (typeof window !== 'undefined' && (window as any).rdt) {
+    (window as any).rdt('track', 'VIEW_CONTENT', {
+      conversion_id: `view_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    });
+  }
+}
+
 export default function HomePage() {
   const [selectedTimeline, setSelectedTimeline] = useState<TimelineOption>('3-days');
 
@@ -32,6 +41,11 @@ export default function HomePage() {
   useEffect(() => {
     localStorage.setItem('ghost-timeline', selectedTimeline);
   }, [selectedTimeline]);
+
+  // Track VIEW_CONTENT on page load
+  useEffect(() => {
+    trackViewContent();
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0f0f14] text-white">

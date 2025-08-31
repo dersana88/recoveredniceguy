@@ -46,6 +46,26 @@ exports.handler = async (event) => {
       console.log('💰 Payment successful! Forwarding to n8n...');
       
       try {
+        // Send Reddit conversion for purchase
+        const redditResponse = await fetch('/.netlify/functions/reddit-conversion', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventType: 'PURCHASE',
+            conversionId: session.id,
+            additionalData: {
+              value: session.amount_total / 100,
+              currency: session.currency
+            }
+          })
+        });
+
+        if (redditResponse.ok) {
+          console.log('✅ Reddit PURCHASE conversion sent');
+        } else {
+          console.error('❌ Reddit conversion failed:', await redditResponse.text());
+        }
+
         // Send all relevant data to n8n
         const response = await fetch(n8nWebhookUrl, {
           method: 'POST',
