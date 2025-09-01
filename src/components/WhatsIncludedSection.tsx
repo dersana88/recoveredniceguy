@@ -240,9 +240,9 @@ export default function WhatsIncludedSection() {
           </div>
           
           <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-            Right now being ghosted is not your fault, but it will be if you don't take action.
+            Right now being ghosted is not your fault, but staying ghosted is your choice.
             <span className="block mt-2 text-orange-400 font-semibold">
-              30-Day Money-Back Guarantee - If she doesn't respond, you get every penny back.
+              30-Day Money-Back Guarantee - If she doesn't respond, you get all $14.99 back.
             </span>
           </p>
           

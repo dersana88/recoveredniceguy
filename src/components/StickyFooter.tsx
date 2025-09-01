@@ -21,7 +21,7 @@ export default function StickyFooter() {
       <div className="flex items-center justify-between">
         <div>
           <div className="text-xl sm:text-2xl font-bold text-green-400">${ghostRecoveryGuide?.price || 14.99}</div>
-          <div className="text-xs text-gray-400">Instant Download</div>
+          <div className="text-xs text-gray-400">Less than lunch</div>
         </div>
         
         <button 

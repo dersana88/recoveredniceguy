@@ -78,8 +78,8 @@ export default function FinalSection() {
 
       <div className="text-center bg-gray-900/50 rounded-xl p-4 sm:p-6 md:p-8 border border-gray-700 mx-4">
         <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-4 sm:mb-6">
-          You searched 'why did she ghost me' and found this page.<br />
-          That's not accident. That's alignment.<br />
+          You found this page because you need it.<br />
+          For the price of lunch, you can end the torture.<br />
           You have <span className="text-orange-400 font-semibold count-up">47</span> hours left in your recovery window.
         </p>
 
@@ -98,13 +98,13 @@ export default function FinalSection() {
           )}
         </button>
         
-        <div className="text-sm sm:text-base text-gray-400">${ghostRecoveryGuide?.price || 99} - Instant Download</div>
+        <div className="text-sm sm:text-base text-gray-400">${ghostRecoveryGuide?.price || 14.99} - Less than lunch - Instant Download</div>
       </div>
 
       <div className="text-center mt-6 sm:mt-8 p-4 sm:p-6 border-t border-gray-700 mx-4">
         <p className="text-sm sm:text-base text-gray-400 italic">
-          P.S. - While you're reading this, she's online. She sees your message sitting there. 
-          The question is: Will you send another 'hey' or something that actually works?
+          P.S. - While you're reading this, she's online. She sees your message sitting there.<br />
+          For $14.99, you can send something that actually works instead of another "hey."
         </p>
       </div>
     </section>
