@@ -116,12 +116,12 @@ export default function WhatsIncludedSection() {
     { icon: RefreshCw, text: "Monthly Template Updates" },
   ];
   const valueStack = [
-    { item: "Main Guide:", value: "$97" },
-    { item: "Psychology Decoder:", value: "$67" },
-    { item: "Never Again Protocol:", value: "$67" },
-    { item: "Mindset Mastery:", value: "$47" },
-    { item: "Emergency Protocol:", value: "$37" },
-    { item: "Lifetime Updates & Support:", value: "$97" }
+    { item: "Main Guide:", value: "$29" },
+    { item: "Psychology Decoder:", value: "$19" },
+    { item: "Never Again Protocol:", value: "$19" },
+    { item: "Mindset Mastery:", value: "$15" },
+    { item: "Emergency Protocol:", value: "$12" },
+    { item: "Lifetime Updates & Support:", value: "$25" }
   ];
 
   return (
@@ -224,7 +224,7 @@ export default function WhatsIncludedSection() {
         <div className="border-t border-gray-600 pt-4">
           <div className="flex justify-between items-center mb-2">
             <span className="text-base sm:text-lg font-semibold text-gray-300">Total Value:</span>
-            <span className="text-base sm:text-lg font-semibold text-gray-400 line-through">$412</span>
+            <span className="text-base sm:text-lg font-semibold text-gray-400 line-through">$119</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-lg sm:text-xl font-bold text-white">Today:</span>
