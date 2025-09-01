@@ -65,3 +65,5 @@ export default function HeroSection({ selectedTimeline, setSelectedTimeline }: H
           Just $14.99 • Less than lunch • Instant Download
         </p>
       </div>
+  )
+}
