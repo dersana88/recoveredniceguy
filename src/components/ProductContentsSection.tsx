@@ -45,7 +45,7 @@ export default function ProductContentsSection() {
   ];
 
   const includes = [
-    "147-page comprehensive guide (2-hour focused read)",
+    "Comprehensive guide (2-hour focused read)",
     "17 field-tested message templates with precise timing charts",
     "Ghost Type Diagnostic Quiz (identify her type in 60 seconds)",
     "Recovery Probability Calculator based on real data",

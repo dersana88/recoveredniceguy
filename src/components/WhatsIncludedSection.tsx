@@ -20,7 +20,6 @@ export default function WhatsIncludedSection() {
   const parts = [
     {
       title: "Part 1: DIAGNOSTIC DECODER",
-      pages: "Pages 1-25",
       items: [
         "Ghost Type Identifier Quiz (15 questions)",
         "The 7 Types of Ghosts & Why Each Happens",
@@ -30,7 +29,6 @@ export default function WhatsIncludedSection() {
     },
     {
       title: "Part 2: THE 72-HOUR PROTOCOL",
-      pages: "Pages 26-54",
       items: [
         "Hour 0-24: The Mandatory Silence Period",
         "Hour 24-48: Strategic Positioning Phase",
@@ -40,7 +38,6 @@ export default function WhatsIncludedSection() {
     },
     {
       title: "Part 3: THE MESSAGE VAULT",
-      pages: "Pages 55-89",
       items: [
         "23 Copy-Paste Recovery Templates",
         "The Phoenix Message (67% response rate)",
@@ -50,7 +47,6 @@ export default function WhatsIncludedSection() {
     },
     {
       title: "Part 4: ADVANCED RECOVERY",
-      pages: "Pages 90-108",
       items: [
         "The Story Bait Method",
         "Social Media Psychology Tactics",
@@ -60,7 +56,6 @@ export default function WhatsIncludedSection() {
     },
     {
       title: "Part 5: POST-RECOVERY GAME",
-      pages: "Pages 109-127",
       items: [
         "Rebuilding Attraction After Ghost",
         "Setting New Boundaries",
@@ -75,7 +70,6 @@ export default function WhatsIncludedSection() {
       icon: Brain,
       title: "BONUS #1: PSYCHOLOGY DECODER",
       value: "$47 value",
-      pages: "31 pages",
       items: [
         "Why Women Really Ghost (7 Hidden Reasons)",
         "The Male Behaviors That Trigger It",
@@ -87,7 +81,6 @@ export default function WhatsIncludedSection() {
       icon: Shield,
       title: "BONUS #2: NEVER AGAIN PROTOCOL",
       value: "$47 value",
-      pages: "28 pages",
       items: [
         "12 Pre-Ghost Warning Signs",
         "Interest Level Thermometer",
@@ -99,7 +92,6 @@ export default function WhatsIncludedSection() {
       icon: Zap,
       title: "BONUS #3: MINDSET MASTERY",
       value: "$37 value",
-      pages: "19 pages",
       items: [
         "Break Phone Addiction in 48 Hours",
         "Abundance Reality Check",
@@ -111,7 +103,6 @@ export default function WhatsIncludedSection() {
       icon: AlertTriangle,
       title: "BONUS #4: EMERGENCY PROTOCOL FOR SERIAL TEXTERS",
       value: "$27 value",
-      pages: "12 pages",
       items: [
         "Damage Control After Multiple Texts",
         "The \"Reset\" Message Template",
@@ -148,7 +139,6 @@ export default function WhatsIncludedSection() {
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-400">
                 THE MAIN GUIDE: 5-PART RECOVERY SYSTEM
               </h3>
-              <span className="text-sm sm:text-base text-green-300 font-medium">127 pages</span>
             </div>
           </div>
         </div>
@@ -159,7 +149,6 @@ export default function WhatsIncludedSection() {
               <h4 className="text-base sm:text-lg font-semibold text-green-400 mb-2">
                 {part.title}
               </h4>
-              <span className="text-sm text-gray-400 mb-4 block">{part.pages}</span>
               <ul className="space-y-1 sm:space-y-2">
                 {part.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="text-gray-300 text-sm leading-relaxed flex items-start">
@@ -193,7 +182,6 @@ export default function WhatsIncludedSection() {
                   </div>
                 </div>
               </div>
-              <span className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4 block">{bonus.pages}</span>
               <ul className="space-y-1 sm:space-y-2">
                 {bonus.items.map((item, itemIndex) => (
                   <li key={itemIndex} className="text-gray-300 text-xs sm:text-sm leading-relaxed flex items-start">
