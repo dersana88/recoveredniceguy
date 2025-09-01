@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowRight } from 'lucide-react';
 import TimelineSelector from './TimelineSelector';
 import RecoveryMeter from './RecoveryMeter';
 import { TimelineOption } from '../types/timeline';
@@ -36,6 +37,34 @@ export default function HeroSection({ selectedTimeline, setSelectedTimeline }: H
       <RecoveryMeter 
         selectedTimeline={selectedTimeline}
       />
+
+      <div className="text-center mt-8 sm:mt-12">
+        <div className="bg-red-600/10 border border-red-500/30 rounded-lg p-4 sm:p-6 mb-6 mx-4">
+          <p className="text-red-300 font-semibold text-sm sm:text-base mb-2">
+            ⚠️ Your Recovery Window is Closing
+          </p>
+          <p className="text-gray-300 text-sm">
+            Every hour you wait, your chances drop by 3-5%. Stop guessing what to send.
+          </p>
+        </div>
+        
+        <button 
+          onClick={() => {
+            const pricingSection = document.querySelector('.whats-included-section');
+            if (pricingSection) {
+              pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }}
+          className="inline-flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 pulse-slow"
+        >
+          <span>Get The Exact Messages That Work</span>
+          <ArrowRight size={20} />
+        </button>
+        
+        <p className="text-sm text-gray-400 mt-3">
+          $14.99 • Instant Download • 30-Day Guarantee
+        </p>
+      </div>
     </section>
   );
 }

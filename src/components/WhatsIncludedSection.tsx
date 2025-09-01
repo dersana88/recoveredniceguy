@@ -233,8 +233,17 @@ export default function WhatsIncludedSection() {
         </div>
         
         <div className="mt-6 sm:mt-8 text-center">
+          <div className="bg-red-600/10 border border-red-500/30 rounded-lg p-3 sm:p-4 mb-4">
+            <p className="text-red-300 font-semibold text-sm sm:text-base">
+              🔥 Limited Time: 87% OFF (Usually $119)
+            </p>
+          </div>
+          
           <p className="text-base sm:text-lg text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-            Right now beeing ghosted is not your fault, but it will be if you don't take action.
+            Right now being ghosted is not your fault, but it will be if you don't take action.
+            <span className="block mt-2 text-orange-400 font-semibold">
+              30-Day Money-Back Guarantee - If she doesn't respond, you get every penny back.
+            </span>
           </p>
           
           <button 

@@ -64,9 +64,24 @@ export default function MindReadingChecklist() {
         
         {checkedItems.length >= 4 && (
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-4 sm:p-6 fade-in mx-4">
-            <p className="text-orange-300 text-base sm:text-lg font-medium">
-              This isn't coincidence. You found this page because you need it.
+            <p className="text-orange-300 text-base sm:text-lg font-medium mb-4">
+              This isn't coincidence. You found this page because you need it. 
+              <span className="block mt-2 text-white font-semibold">
+                Stop the torture. Get the exact messages that work.
+              </span>
             </p>
+            
+            <button 
+              onClick={() => {
+                const pricingSection = document.querySelector('.whats-included-section');
+                if (pricingSection) {
+                  pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300"
+            >
+              End The Phone-Checking Cycle Now - $14.99
+            </button>
           </div>
         )}
       </div>
