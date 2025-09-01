@@ -58,7 +58,7 @@ export default function HomePage() {
         />
         
         <TestimonialSingle 
-          text="Already sent 4 texts when I found this. Thought I'd ruined everything. The 'Emergency Protocol for Serial Texters' saved me. She responded to the recovery message. Worth $99 just to stop checking my phone 200 times a day."
+          text="Best $15 I ever spent. Already sent 4 texts when I found this. Thought I'd ruined everything. The 'Emergency Protocol for Serial Texters' saved me. She responded to the recovery message in 3 hours."
           author="Michael K."
           location="Chicago"
         />
@@ -70,7 +70,7 @@ export default function HomePage() {
         <SymptomsGrid />
         
         <TestimonialSingle 
-          text="She hadn't replied in 8 days. Used template #7. Got 'sorry, been overwhelmed, want to grab drinks Friday?' The mental torture stopped instantly. That alone is worth the price."
+          text="She hadn't replied in 8 days. Used template #7. Got 'sorry, been overwhelmed, want to grab drinks Friday?' For $15, this ended 8 days of mental torture. Cheaper than therapy."
           author="David R."
           location="Austin"
           darkBg={true}
@@ -85,13 +85,13 @@ export default function HomePage() {
         <TestimonialDouble 
           testimonials={[
             {
-              text: "67% success rate is real. She replied in 2 hours: 'I needed space to think, but I miss talking to you.' Currently texting. My hands aren't shaking anymore.",
+              text: "67% success rate is real. She replied in 2 hours: 'I needed space to think, but I miss talking to you.' Currently texting. $15 well spent - my hands aren't shaking anymore.",
               author: "James T.",
               location: "Denver",
               type: "success"
             },
             {
-              text: "Didn't get her back. But the guide showed me she was never interested. The closure was worth more than getting a response. Stopped feeling pathetic, started dating others.",
+              text: "Didn't get her back. But for $15, the guide showed me she was never interested. The closure was worth way more than getting a response. Stopped feeling pathetic, started dating others.",
               author: "Ryan M.",
               location: "Seattle", 
               type: "closure"

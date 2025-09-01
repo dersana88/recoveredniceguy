@@ -10,19 +10,19 @@ export default function ValidationQuestions() {
   const questions = [
     {
       q: "Should I assume I've been ghosted?",
-      a: "After 72 hours of silence with active social media? Yes."
+      a: "After 72 hours of silence with active social media? Yes. But it's fixable."
     },
     {
       q: "Do you think she'll come back?",
-      a: "Without the right approach? 12% chance after day 3."
+      a: "Without the right approach? 12% chance. With it? 67%."
     },
     {
       q: "Was I being too intense with my texting?",
-      a: "If you're asking this question, probably yes."
+      a: "If you're asking this question, probably yes. But there's a fix."
     },
     {
       q: "Should I break the no contact rule?",
-      a: "Not with another \"hey\" or \"everything okay?\" - those never work."
+      a: "Not with \"hey\" or \"everything okay?\" Use the templates that actually work."
     }
   ];
 

@@ -34,7 +34,7 @@ export default function TestimonialDouble({ testimonials }: TestimonialDoublePro
             </strong>
             <span className="text-xs text-gray-500 italic">
               (name changed for privacy)
-            </span>
+            (verified purchase - name changed for privacy)
           </div>
         </div>
       ))}

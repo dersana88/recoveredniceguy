@@ -80,7 +80,7 @@ export default function MindReadingChecklist() {
               }}
               className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300"
             >
-              End The Phone-Checking Cycle Now - $14.99
+              End The Phone-Checking Cycle - Just $14.99
             </button>
           </div>
         )}

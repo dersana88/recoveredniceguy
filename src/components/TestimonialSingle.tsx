@@ -23,7 +23,7 @@ export default function TestimonialSingle({ text, author, location, darkBg = fal
             - {author}, {location}
           </strong>
           <span className="text-xs text-gray-500 italic">
-            (name changed for privacy)
+            (verified purchase - name changed for privacy)
           </span>
         </div>
       </div>
