@@ -65,8 +65,3 @@ export default function HeroSection({ selectedTimeline, setSelectedTimeline }: H
           Just $14.99 • Less than lunch • Instant Download
         </p>
       </div>
-          Every hour you wait, your chances drop by 3-5%. For less than a coffee date.
-  );
-}
-  )
-}
