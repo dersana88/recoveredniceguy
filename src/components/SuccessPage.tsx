@@ -75,7 +75,7 @@ export default function SuccessPage() {
               </div>
               <div className="flex justify-between">
                 <span>Amount:</span>
-                <span className="font-medium text-green-400">$99.00</span>
+                <span className="font-medium text-green-400">$14.99</span>
               </div>
               <div className="flex justify-between">
                 <span>Order ID:</span>
