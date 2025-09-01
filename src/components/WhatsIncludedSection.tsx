@@ -120,8 +120,7 @@ export default function WhatsIncludedSection() {
     { item: "Psychology Decoder:", value: "$19" },
     { item: "Never Again Protocol:", value: "$19" },
     { item: "Mindset Mastery:", value: "$15" },
-    { item: "Emergency Protocol:", value: "$12" },
-    { item: "Lifetime Updates & Support:", value: "$25" }
+    { item: "Emergency Protocol:", value: "$12" }
   ];
 
   return (
