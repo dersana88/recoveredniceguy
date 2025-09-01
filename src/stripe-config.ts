@@ -10,11 +10,11 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 'prod_SwCIyU94gSAJOS',
-    priceId: 'price_1S1PfDEk4co9sYTKVNobZjOF',
+    priceId: 'price_1S0Ju5Ek4co9sYTKV8rK8kbN',
     name: 'Ghost Recovery Guide',
     description: '✓Complete 127-Page System✓ 15-Question Ghost Type Identifier Quiz✓ 72-Hour Recovery Timeline (Hour-by-Hour)✓ 23 Copy-Paste Message Templates (67% Success)✓ 4 Bonus Guides Worth $158 (FREE)Instant Download',
     mode: 'payment',
-    price: 0.50
+    price: 99
   }
 ];
 

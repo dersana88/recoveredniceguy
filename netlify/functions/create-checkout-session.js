@@ -44,7 +44,7 @@ exports.handler = async (event) => {
     // Get price ID - mit Fallback auf deine spezifische Price ID
     const priceId = requestBody.priceId || 
                     requestBody.price_id || 
-                    'price_1S1OHkEk4co9sYTKSsSpwUFm'; // Fallback auf deine Price ID
+                    'price_1S0Ju5Ek4co9sYTKV8rK8kbN'; // Fallback auf deine Price ID
     
     const mode = requestBody.mode || 'payment';
     
