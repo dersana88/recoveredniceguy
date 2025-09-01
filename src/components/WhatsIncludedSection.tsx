@@ -116,11 +116,11 @@ export default function WhatsIncludedSection() {
     { icon: RefreshCw, text: "Monthly Template Updates" },
   ];
   const valueStack = [
-    { item: "Main Guide (127 pages):", value: "$14.99" },
-    { item: "Psychology Decoder (31 pages):", value: "$47" },
-    { item: "Never Again Protocol (28 pages):", value: "$47" },
-    { item: "Mindset Mastery (19 pages):", value: "$37" },
-    { item: "Emergency Protocol (12 pages):", value: "$27" },
+    { item: "Main Guide:", value: "$49.99" },
+    { item: "Psychology Decoder:", value: "$47" },
+    { item: "Never Again Protocol:", value: "$47" },
+    { item: "Mindset Mastery:", value: "$37" },
+    { item: "Emergency Protocol:", value: "$27" },
     { item: "Lifetime Updates & Support:", value: "$67" }
   ];
 
