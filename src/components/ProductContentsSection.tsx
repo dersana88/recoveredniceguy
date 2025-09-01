@@ -164,7 +164,7 @@ export default function ProductContentsSection() {
         <div className="mb-6">
           <div className="text-base sm:text-lg text-gray-400 mb-2">Investment:</div>
           <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-400 mb-2">
-            ${ghostRecoveryGuide?.price || 99}
+            ${ghostRecoveryGuide?.price || 14.99}
           </div>
           <div className="text-sm sm:text-base text-gray-400 italic">
             (Less than two therapy sessions wondering why she's not responding)

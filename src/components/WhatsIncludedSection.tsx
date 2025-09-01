@@ -125,7 +125,7 @@ export default function WhatsIncludedSection() {
     { icon: RefreshCw, text: "Monthly Template Updates" },
   ];
   const valueStack = [
-    { item: "Main Guide (127 pages):", value: "$99" },
+    { item: "Main Guide (127 pages):", value: "$14.99" },
     { item: "Psychology Decoder (31 pages):", value: "$47" },
     { item: "Never Again Protocol (28 pages):", value: "$47" },
     { item: "Mindset Mastery (19 pages):", value: "$37" },
@@ -240,7 +240,7 @@ export default function WhatsIncludedSection() {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-lg sm:text-xl font-bold text-white">Today:</span>
-            <span className="text-xl sm:text-2xl font-bold text-green-400">$99</span>
+            <span className="text-xl sm:text-2xl font-bold text-green-400">$14.99</span>
           </div>
         </div>
         

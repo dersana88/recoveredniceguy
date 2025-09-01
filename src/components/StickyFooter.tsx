@@ -20,7 +20,7 @@ export default function StickyFooter() {
     <div className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-700 p-4 z-50 pb-safe">
       <div className="flex items-center justify-between">
         <div>
-          <div className="text-xl sm:text-2xl font-bold text-green-400">${ghostRecoveryGuide?.price || 99}</div>
+          <div className="text-xl sm:text-2xl font-bold text-green-400">${ghostRecoveryGuide?.price || 14.99}</div>
           <div className="text-xs text-gray-400">Instant Download</div>
         </div>
         
